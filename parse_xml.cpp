@@ -6,21 +6,33 @@
 
 #include "parser_functions.cpp"
 #include "scan_functions.cpp"
+#include "read_config.cpp"
 #include <filesystem>
-#include <fstream>
 #include <typeinfo>
 #include <algorithm>
 
 int main()
 {
+	// Get configuration file
+	std::ifstream my_config_file("config.cfg");
+
+	// Check file opening
+	if (!my_config_file.is_open())
+		return (-1);
+
+	std::string pmc_path = get_config_param(&my_config_file, "pmc_path");
+	std::string sources_path = get_config_param(&my_config_file, "sources_path");
+
+	my_config_file.close();
+
 	// Which PMC to analyse?
-	const std::filesystem::path main_pmc_dir = std::filesystem::u8path("/data/quillaur/Documents/pmc");
+	const std::filesystem::path main_pmc_dir = std::filesystem::u8path(pmc_path);
 
 	// Which words to scan text for?
 	std::string entity_names = "Neuropeptides|vertebrates";
 
 	// Initialize /pmc/sources directory in order to avoid it later in the loop.
-	const std::filesystem::path sources_dir = std::filesystem::u8path("/data/quillaur/Documents/pmc/sources");
+	const std::filesystem::path sources_dir = std::filesystem::u8path(sources_path);
 	const char * pointer_sources = sources_dir.c_str();
 	
 	// Write results to file
