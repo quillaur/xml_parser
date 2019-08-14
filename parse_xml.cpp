@@ -18,8 +18,11 @@ int main()
 
 	// Check file opening
 	if (!my_config_file.is_open())
+	{
+		std::cout << "config.cfg did not open !" << std::endl;
 		return (-1);
-
+	}
+		
 	std::string pmc_path = get_config_param(&my_config_file, "pmc_path");
 	std::string sources_path = get_config_param(&my_config_file, "sources_path");
 
@@ -41,8 +44,11 @@ int main()
 	
 	// Check file opening
 	if (!my_csv.is_open())
+	{
+		std::cout << "cpp_test_xml_parsing.csv did not open !" << std::endl;
 		return (-1);
-
+	}
+		
 	// Header
 	my_csv << "PMCID;Title;Hit" << std::endl;
 
