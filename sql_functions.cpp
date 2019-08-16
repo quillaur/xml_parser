@@ -5,9 +5,9 @@
 int main()
 {
     const char * host = "localhost";
-    const char * user = "quillaur";
-    const char * passwd = "DPh8@v4%";
-    const char * db = "omictools_pro";
+    const char * user = "****";
+    const char * passwd = "******";
+    const char * db = "******";
     const char * unix_socket = "/var/run/mysqld/mysqld.sock";
     unsigned long flags = 0;
     unsigned int port = 0;
