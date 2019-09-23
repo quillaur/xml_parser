@@ -10,13 +10,13 @@ std::string entity_scan_all_hits(const std::regex entity_regex, const std::strin
 	auto words_end = std::sregex_iterator();
 
 	// How many hits?
-	if (std::distance(words_begin, words_end) > 0)
-	{
-		std::cout << "Found " 
-              << std::distance(words_begin, words_end) 
-              << " hits." 
-              << std::endl;
-	}
+	// if (std::distance(words_begin, words_end) > 0)
+	// {
+	// 	std::cout << "Found " 
+ //              << std::distance(words_begin, words_end) 
+ //              << " hits." 
+ //              << std::endl;
+	// }
 	
     // Return all hits
   	std::string results = "";
@@ -30,11 +30,10 @@ std::string entity_scan_all_hits(const std::regex entity_regex, const std::strin
 }
 
 // Function to scan any given list of entities on a given string. If there is a match, returns all hits.
-std::string entity_scan(const std::string entity_names, const std::string text)
+std::string entity_scan(const std::regex entity_regex, const std::string text)
 {
 	// Scan text for an entity
 	std::smatch hit;
-	std::regex entity_regex(entity_names, std::regex::icase);
 
 	// If there is a hit
 	if(std::regex_search(text, hit, entity_regex))

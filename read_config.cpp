@@ -1,4 +1,7 @@
 #include <fstream>
+#include <cstring>
+#include <vector>
+#include <sstream>
 
 // Function to split a string on a given delimiter.
 std::vector<std::string> split(const std::string &s, const char * delimiter)
